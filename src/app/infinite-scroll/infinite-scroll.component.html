@@ -1,0 +1,8 @@
+<ng-container *ngIf="infinite | async as people">
+  <cdk-virtual-scroll-viewport itemSize="100" (scrolledIndexChange)="nextBatch($event, (people[people.length-1].name))">
+    <li *cdkVirtualFor="let p of people; let i=index; trackBy: trackByIdx" class="animated slideInRight">
+      <h2>{{i}}. {{p.name}} {{p.emoji}}</h2>
+      <p>{{p.bio}}</p>
+    </li>
+  </cdk-virtual-scroll-viewport>
+</ng-container>
